@@ -13,7 +13,8 @@ package cse360assign2;
 
 public class AddingMachine {
 
-	private int total;
+	private static int total;
+	private static String history;
 	
 	/**
 	 * Constructor	
@@ -26,36 +27,50 @@ public class AddingMachine {
 	 * @return total
 	 */
 	public int getTotal () {
-		return 0;
+		return total;
 	}
 	
 	/**
-	 * Add method will add value to total
+	 * Add method will add value to total.
 	 * @param value
 	 */
-	public void add (int value) {
+	public static void add (int value) {
+		total += value;
 		
+		if ( history == "" ) {
+			history += "0";
+		}
+		
+		history = history + " + " + value;
 	}
 	
 	/**
-	 * Subtract method will subtract value from total
+	 * Subtract method will subtract value from total.
 	 * @param value
 	 */
-	public void subtract (int value) {
+	public static void subtract (int value) {
+		total -= value;
 		
+		if (history == "") {
+			history += "0";
+		}
+		
+		history = history + " - " + value;
 	}
 	
 	/**
-	 * toString method keeps history of the transactions	
+	 * toString method keeps history of the transactions
+	 * @return history
 	 */
 	public String toString () {
-		return "";
+		return history;
 	}
 	
 	/**
-	 * Clear method will erase the history.
+	 * Clear will erase the history and clear total.
 	 */
-	public void clear() {
-	
+	public static void clear() {
+		history = "";
+		total = 0;
 	}
 }
